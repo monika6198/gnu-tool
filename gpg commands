@@ -71,6 +71,8 @@ gpg: Total number processed: 1
 gpg:              unchanged: 1
 gpg:       secret keys read: 1
 gpg:  secret keys unchanged: 1
+
+//Listing public keys
 movaid@EXPC02FM07XMD6R Desktop % gpg --list-keys 
 gpg: checking the trustdb
 gpg: marginals needed: 3  completes needed: 1  trust model: pgp
@@ -100,6 +102,7 @@ pub   rsa3072 2022-05-12 [SC] [expires: 2024-05-11]
 uid           [ultimate] movaid <movaid@expediagroup.com>
 sub   rsa3072 2022-05-12 [E] [expires: 2024-05-11]
 
+//Listing private keys
 movaid@EXPC02FM07XMD6R Desktop % gpg --list-secret-keys
 /Users/movaid/.gnupg/pubring.kbx
 --------------------------------
@@ -113,19 +116,24 @@ sec   rsa3072 2022-05-12 [SC] [expires: 2024-05-11]
 uid           [ultimate] movaid <movaid@expediagroup.com>
 ssb   rsa3072 2022-05-12 [E] [expires: 2024-05-11]
 
-movaid@EXPC02FM07XMD6R Desktop % gpg --e -r movaid Desktop/Demo.txt
-option "--e" is ambiguous
 movaid@EXPC02FM07XMD6R Desktop % gpg --encrypt -r movaid Desktop/Demo.txt
-gpg: can't open 'Desktop/Demo.txt': No such file or directory
+gpg: can't open 'Desktop/Demo.txt': No such file or directory.  //Already in Desktop
+
 gpg: Desktop/Demo.txt: encryption failed: No such file or directory
-movaid@EXPC02FM07XMD6R Desktop % gpg --encrypt -r movaid Demo.txt        
+movaid@EXPC02FM07XMD6R Desktop % gpg --encrypt -r movaid Demo.txt
+
+//Writing the decrypted code into the same file (overriding the current file)
 movaid@EXPC02FM07XMD6R Desktop % gpg --output Demo.txt --decrypt Demo.txt.gpg
 gpg: encrypted with 4096-bit RSA key, ID EDDB1F64C8000EA4, created 2022-05-12
       "MONIKA VAID <movaid@expediagroup.com>"
 File 'Demo.txt' exists. Overwrite? (y/N) y
+
+//Giving invalid name of the file
 movaid@EXPC02FM07XMD6R Desktop % gpg --output Demo.txt --decrypt Demo1.txt.gpg
 gpg: can't open 'Demo1.txt.gpg': No such file or directory
 gpg: decrypt_message failed: No such file or directory
+
+//Writing the decrypted code into a new file "DemoOutput"
 movaid@EXPC02FM07XMD6R Desktop % gpg --output DemoOutput.txt --decrypt Demo.txt.gpg
 gpg: encrypted with 4096-bit RSA key, ID EDDB1F64C8000EA4, created 2022-05-12
       "MONIKA VAID <movaid@expediagroup.com>"
