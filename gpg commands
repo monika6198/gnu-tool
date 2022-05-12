@@ -1,0 +1,132 @@
+Last login: Wed May 11 11:55:44 on ttys003
+movaid@EXPC02FM07XMD6R ~ % pgp --gen-key
+zsh: command not found: pgp
+movaid@EXPC02FM07XMD6R ~ % gpg --gen-key
+gpg (GnuPG/MacGPG2) 2.2.34; Copyright (C) 2022 g10 Code GmbH
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+
+Note: Use "gpg --full-generate-key" for a full featured key generation dialog.
+
+GnuPG needs to construct a user ID to identify your key.
+
+Real name: movaid
+Email address: movaid@expediagroup.com
+You selected this USER-ID:
+    "movaid <movaid@expediagroup.com>"
+
+Change (N)ame, (E)mail, or (O)kay/(Q)uit? O
+We need to generate a lot of random bytes. It is a good idea to perform
+some other action (type on the keyboard, move the mouse, utilize the
+disks) during the prime generation; this gives the random number
+generator a better chance to gain enough entropy.
+We need to generate a lot of random bytes. It is a good idea to perform
+some other action (type on the keyboard, move the mouse, utilize the
+disks) during the prime generation; this gives the random number
+generator a better chance to gain enough entropy.
+gpg: revocation certificate stored as '/Users/movaid/.gnupg/openpgp-revocs.d/838E7C218607D11E2A5E8B03C6FFE32CA55D257C.rev'
+public and secret key created and signed.
+
+pub   rsa3072 2022-05-12 [SC] [expires: 2024-05-11]
+      838E7C218607D11E2A5E8B03C6FFE32CA55D257C
+uid                      movaid <movaid@expediagroup.com>
+sub   rsa3072 2022-05-12 [E] [expires: 2024-05-11]
+
+movaid@EXPC02FM07XMD6R ~ % gpg --export -a movaid > public.key
+movaid@EXPC02FM07XMD6R ~ % ls
+Applications	Desktop		Documents	Downloads	Library		Movies		Music		Pictures	Public		public.key
+movaid@EXPC02FM07XMD6R ~ % pwd
+/Users/movaid
+movaid@EXPC02FM07XMD6R ~ % cd Desktop
+movaid@EXPC02FM07XMD6R Desktop % gpg --export -a movaid > public.key
+movaid@EXPC02FM07XMD6R Desktop % gpg --export-secret-key -a movaid > private.key
+gpg: key C7119C73ADD1C02459F93BF12A01FDD5C11386D1: error receiving key from agent: Operation cancelled - skipped
+movaid@EXPC02FM07XMD6R Desktop % ls
+Demo.txt					Screenshot 2022-04-28 at 4.54.45 PM.png		Screenshot 2022-05-09 at 12.53.56 PM.png
+MS						Screenshot 2022-04-28 at 4.58.16 PM.png		Screenshot 2022-05-10 at 8.39.42 AM.png
+Screenshot 2022-04-25 at 5.21.48 PM.png		Screenshot 2022-04-29 at 11.55.17 AM.png	private.key
+Screenshot 2022-04-26 at 4.24.24 PM.png		Screenshot 2022-04-29 at 12.00.33 PM.png	public.key
+Screenshot 2022-04-27 at 1.00.58 PM.png		Screenshot 2022-04-29 at 4.59.00 PM.png		settings.xml
+Screenshot 2022-04-27 at 5.43.58 PM.png		Screenshot 2022-05-04 at 2.31.33 PM.png
+movaid@EXPC02FM07XMD6R Desktop % gpg --import public.key
+gpg: key 4134BD62CC53B185: "MONIKA VAID <movaid@expediagroup.com>" not changed
+gpg: key C6FFE32CA55D257C: "movaid <movaid@expediagroup.com>" not changed
+gpg: Total number processed: 2
+gpg:              unchanged: 2
+movaid@EXPC02FM07XMD6R Desktop % gpg --import private.key
+gpg: key 4134BD62CC53B185: 1 bad signature
+gpg: key 4134BD62CC53B185: "MONIKA VAID <movaid@expediagroup.com>" not changed
+gpg: key 4134BD62CC53B185: secret key imported
+gpg: key 4134BD62CC53B185: secret key imported
+gpg: Total number processed: 1
+gpg:              unchanged: 1
+gpg:       secret keys read: 1
+gpg:  secret keys unchanged: 1
+movaid@EXPC02FM07XMD6R Desktop % gpg --allow-secret-key-import --import private.key
+gpg: key 4134BD62CC53B185: 1 bad signature
+gpg: key 4134BD62CC53B185: "MONIKA VAID <movaid@expediagroup.com>" not changed
+gpg: key 4134BD62CC53B185: secret key imported
+gpg: key 4134BD62CC53B185: secret key imported
+gpg: Total number processed: 1
+gpg:              unchanged: 1
+gpg:       secret keys read: 1
+gpg:  secret keys unchanged: 1
+movaid@EXPC02FM07XMD6R Desktop % gpg --list-keys 
+gpg: checking the trustdb
+gpg: marginals needed: 3  completes needed: 1  trust model: pgp
+gpg: depth: 0  valid:   2  signed:   0  trust: 0-, 0q, 0n, 0m, 0f, 2u
+gpg: next trustdb check due at 2024-05-11
+/Users/movaid/.gnupg/pubring.kbx
+--------------------------------
+pub   dsa2048 2010-08-19 [SC] [expires: 2024-05-11]
+      85E38F69046B44C1EC9FB07B76D78F0500D026C4
+uid           [ unknown] GPGTools Team <team@gpgtools.org>
+uid           [ unknown] [jpeg image of size 6329]
+sub   rsa4096 2014-04-08 [S] [expires: 2024-05-11]
+sub   rsa4096 2020-05-11 [E] [expires: 2024-05-11]
+
+pub   rsa4096 2020-05-04 [SC] [expires: 2024-05-03]
+      B97E9964ACAD1907970D37CC8A9E3745558E41AF
+uid           [ unknown] GPGTools Support <support@gpgtools.org>
+sub   rsa4096 2020-05-04 [E] [expires: 2024-05-03]
+
+pub   rsa4096 2022-05-12 [SC] [expires: 2026-05-12]
+      83EF6929BA9B0526676F8C1B4134BD62CC53B185
+uid           [ultimate] MONIKA VAID <movaid@expediagroup.com>
+sub   rsa4096 2022-05-12 [E] [expires: 2026-05-12]
+
+pub   rsa3072 2022-05-12 [SC] [expires: 2024-05-11]
+      838E7C218607D11E2A5E8B03C6FFE32CA55D257C
+uid           [ultimate] movaid <movaid@expediagroup.com>
+sub   rsa3072 2022-05-12 [E] [expires: 2024-05-11]
+
+movaid@EXPC02FM07XMD6R Desktop % gpg --list-secret-keys
+/Users/movaid/.gnupg/pubring.kbx
+--------------------------------
+sec   rsa4096 2022-05-12 [SC] [expires: 2026-05-12]
+      83EF6929BA9B0526676F8C1B4134BD62CC53B185
+uid           [ultimate] MONIKA VAID <movaid@expediagroup.com>
+ssb   rsa4096 2022-05-12 [E] [expires: 2026-05-12]
+
+sec   rsa3072 2022-05-12 [SC] [expires: 2024-05-11]
+      838E7C218607D11E2A5E8B03C6FFE32CA55D257C
+uid           [ultimate] movaid <movaid@expediagroup.com>
+ssb   rsa3072 2022-05-12 [E] [expires: 2024-05-11]
+
+movaid@EXPC02FM07XMD6R Desktop % gpg --e -r movaid Desktop/Demo.txt
+option "--e" is ambiguous
+movaid@EXPC02FM07XMD6R Desktop % gpg --encrypt -r movaid Desktop/Demo.txt
+gpg: can't open 'Desktop/Demo.txt': No such file or directory
+gpg: Desktop/Demo.txt: encryption failed: No such file or directory
+movaid@EXPC02FM07XMD6R Desktop % gpg --encrypt -r movaid Demo.txt        
+movaid@EXPC02FM07XMD6R Desktop % gpg --output Demo.txt --decrypt Demo.txt.gpg
+gpg: encrypted with 4096-bit RSA key, ID EDDB1F64C8000EA4, created 2022-05-12
+      "MONIKA VAID <movaid@expediagroup.com>"
+File 'Demo.txt' exists. Overwrite? (y/N) y
+movaid@EXPC02FM07XMD6R Desktop % gpg --output Demo.txt --decrypt Demo1.txt.gpg
+gpg: can't open 'Demo1.txt.gpg': No such file or directory
+gpg: decrypt_message failed: No such file or directory
+movaid@EXPC02FM07XMD6R Desktop % gpg --output DemoOutput.txt --decrypt Demo.txt.gpg
+gpg: encrypted with 4096-bit RSA key, ID EDDB1F64C8000EA4, created 2022-05-12
+      "MONIKA VAID <movaid@expediagroup.com>"
+movaid@EXPC02FM07XMD6R Desktop % 
